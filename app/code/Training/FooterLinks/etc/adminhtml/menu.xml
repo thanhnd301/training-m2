@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Training_FooterLinks::training" title="Training" module="Training_FooterLinks" sortOrder="15" dependsOnModule="Training_FooterLinks" resource="Training_FooterLinks::training"/>
+        <add id="Training_FooterLinks::footerlinks" title="Footer Links Manager" module="Training_FooterLinks" sortOrder="10" parent="Training_FooterLinks::training" resource="Training_FooterLinks::training" />
+        <add id="Training_FooterLinks::footerlinks_linkgroup" title="Manage Links" module="Training_FooterLinks" sortOrder="10" parent="Training_FooterLinks::footerlinks" action="footerlinks/linkgroup" resource="Training_FooterLinks::footerlinks_linkgroup"/>
+        <add id="Training_FooterLinks::footerlinks_config" title="Configuarations" module="Training_FooterLinks" sortOrder="10" parent="Training_FooterLinks::footerlinks" action="adminhtml/system_config/edit/section/footerlinks" resource="Training_FooterLinks::footerlinks_config"/>
+    </menu>
+</config>

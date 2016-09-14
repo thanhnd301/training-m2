@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
+    <widget id="training_sliderwidget" class="Training\SliderWidget\Block\Widget\Slider">
+        <label translate="true">Training Slider Widget</label>
+        <description>Training Slider Widget in Magento2</description>
+        <parameters>
+            <parameter name="slider" xsi:type="select" source_model="Training\SliderWidget\Model\Option\Slider" visible="true" sort_order="50" >
+                <label translate="true">Select Slider</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

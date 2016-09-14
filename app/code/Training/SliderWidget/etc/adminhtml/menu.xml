@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Training_SliderWidget::sliderwidget" title="Slider Manager" module="Training_SliderWidget" sortOrder="20" parent="Training_FooterLinks::training" resource="Training_FooterLinks::training" />
+        <add id="Training_SliderWidget::sliderwidget_slider" title="Manage Slider" module="Training_SliderWidget" sortOrder="10" parent="Training_SliderWidget::sliderwidget" action="sliderwidget/slider" resource="Training_SliderWidget::sliderwidget_slider"/>
+        <add id="Training_SliderWidget::sliderwidget_config" title="Configuarations" module="Training_SliderWidget" sortOrder="20" parent="Training_SliderWidget::sliderwidget" action="adminhtml/system_config/edit/section/sliderwidget" resource="Training_SliderWidget::sliderwidget_config"/>
+    </menu>
+</config>
