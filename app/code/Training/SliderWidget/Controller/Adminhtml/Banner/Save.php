@@ -8,10 +8,30 @@
 
 namespace Training\SliderWidget\Controller\Adminhtml\Banner;
 
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\View\Result\LayoutFactory;
 use Training\SliderWidget\Controller\Adminhtml\BannerAbstract;
+use Training\SliderWidget\Model\BannerFactory;
+use Training\SliderWidget\Model\ImageUploader;
 
 class Save extends BannerAbstract
 {
+    protected $imageUploader;
+
+    public function __construct(
+        Context $context,
+        Registry $coreRegistry,
+        PageFactory $resultPageFactory,
+        LayoutFactory $resultLayoutFactory,
+        ImageUploader $imageUploader,
+        BannerFactory $bannerFactory)
+    {
+        parent::__construct($context, $coreRegistry, $resultPageFactory, $resultLayoutFactory, $bannerFactory);
+        $this->imageUploader = $imageUploader;
+    }
+
     /**
      * @return void
      */
@@ -34,6 +54,11 @@ class Save extends BannerAbstract
                     $banner = $model->load($bannerId);
                     $bannerData = array_merge($banner,$bannerData);
                 }
+
+                // Save image
+                $image = $bannerData['image'][0]['name'];
+                $this->imageUploader->moveFileFromTmp($image);
+                $bannerData['image'] = $image;
 
                 // Update time
                 $updateTime = date('Y-m-d H:i:s');

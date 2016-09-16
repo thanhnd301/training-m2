@@ -41,7 +41,7 @@
     </virtualType>
     <type name="Training\SliderWidget\Controller\Adminhtml\Slider\Upload">
         <arguments>
-            <argument name="imageUploader" xsi:type="object">Training\SliderWidget\BannerUpload</argument>
+            <argument name="imageUploader" xsi:type="object">Training\SliderWidget\Banner\Upload</argument>
         </arguments>
     </type>
 </config>

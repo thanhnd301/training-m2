@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tutorial_Sample::sample" title="Sample" module="Tutorial_Sample" sortOrder="30" resource="Tutorial_Sample::sample"/>
+        <add id="Tutorial_Sample::sample_manage" title="All Items" module="Tutorial_Sample" sortOrder="10" parent="Tutorial_Sample::sample" action="sample/index/" resource="Tutorial_Sample::manage"/>
+    </menu>
+</config>

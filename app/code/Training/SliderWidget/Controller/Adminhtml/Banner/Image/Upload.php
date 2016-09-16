@@ -6,7 +6,7 @@
  * Time: 4:24 PM
  */
 
-namespace Training\SliderWidget\Controller\Adminhtml\Banner;
+namespace Training\SliderWidget\Controller\Adminhtml\Banner\Image;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -63,7 +63,7 @@ class Upload extends Action
                 'domain' => $this->_getSession()->getCookieDomain(),
             ];
         } catch (\Exception $e) {
-            $result = ['error' => $e->getMessage(), 'errorcode' => $e->getCode(), 'trace'=>$e->getTraceAsString()];
+            $result = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];
         }
         return $this->resultFactory->create(ResultFactory::TYPE_JSON)->setData($result);
     }

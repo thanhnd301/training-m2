@@ -231,7 +231,7 @@ class ImageUploader
     public function saveFileToTmpDir($fileId)
     {
         $baseTmpPath = $this->getBaseTmpPath();
-
+        $this->__prepareImage();
         $uploader = $this->uploaderFactory->create(['fileId' => $fileId]);
         $uploader->setAllowedExtensions($this->getAllowedExtensions());
         $uploader->setAllowRenameFiles(true);
@@ -269,5 +269,18 @@ class ImageUploader
         }
 
         return $result;
+    }
+
+    private function __prepareImage()
+    {
+        $imageInfo = [
+            'name'=>$_FILES['general']['name']['image'],
+            'type'=>$_FILES['general']['type']['image'],
+            'tmp_name'=>$_FILES['general']['tmp_name']['image'],
+            'error'=>$_FILES['general']['error']['image'],
+            'size'=>$_FILES['general']['size']['image']
+        ];
+
+        $_FILES = ['image'=>$imageInfo];
     }
 }
