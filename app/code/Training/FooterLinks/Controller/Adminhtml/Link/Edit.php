@@ -21,13 +21,12 @@ class Edit extends LinkAbstract
 
         /** @var \Training\FooterLinks\Model\Link $model */
         $model = $this->_linkFactory->create();
-        $this->_coreRegistry->register('linkgroup',$this->_getSession()->getGroupId());
 
         if ($linkId) {
             $model->load($linkId);
             if (!$model->getId()) {
                 $this->messageManager->addError(__('This link no longer exists.'));
-                $this->_redirect('*/*/',['linkgroup'=>$this->_getSession()->getGroupId()]);
+                $this->_redirect('*/*/index');
                 return;
             }
             $this->_coreRegistry->register('link_id',$model->getId());

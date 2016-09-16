@@ -36,7 +36,7 @@ class Delete extends LinkAbstract
                 $model->delete();
                 $this->messageManager->addSuccess(__('The link has been deleted.'));
 
-                $this->_redirect('*/*/index',['linkgroup'=>$this->_getSession()->getGroupId()]);
+                $this->_redirect('*/*/index');
             }
             catch (\Exception $e)
             {

@@ -17,19 +17,6 @@ class Index extends LinkAbstract
      */
     public function execute()
     {
-        // Not set link group redirect to link group management
-        if(!$this->getRequest()->getParam('linkgroup'))
-        {
-            $this->_redirect('footerlinks/linkgroup/index');
-        }
-
-        // Set links group id
-        if($this->_getSession()->getGroupId() != $this->getRequest()->getParam('linkgroup')
-            || null == $this->_getSession()->getGroupId())
-        {
-            $this->_getSession()->setGroupId($this->getRequest()->getParam('linkgroup'));
-        }
-
         //Call page factory to render layout and page content
         $resultPage = $this->_resultPageFactory->create();
 

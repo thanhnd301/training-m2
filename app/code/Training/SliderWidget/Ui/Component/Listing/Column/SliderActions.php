@@ -59,17 +59,6 @@ class SliderActions extends Column
                     'hidden' => false,
                     'target' => '_blank',
                 ];
-                $item[$this->getData('name')]['manager'] = [
-                    'href' => $this->urlBuilder->getUrl(
-                        'sliderwidget/banner/index',
-                        [
-                            'slider' => $item['slider_id']
-                        ]
-                    ),
-                    'label' => __('Banners Manager'),
-                    'hidden' => true,
-                    'target' => '_blank',
-                ];
             }
         }
 

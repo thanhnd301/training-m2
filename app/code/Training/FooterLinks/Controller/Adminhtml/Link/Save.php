@@ -42,7 +42,7 @@ class Save extends LinkAbstract
                     $linkData["creation_time"] = $updateTime;
                 }
                 $linkData["update_time"] = $updateTime;
-                $linkData["group_id"] = $this->_getSession()->getGroupId();
+//                $linkData["group_id"] = $this->_getSession()->getGroupId();
 
                 $model->setData($linkData);
                 $model->save();
@@ -53,7 +53,7 @@ class Save extends LinkAbstract
                     var_dump($model->getData());die("<br/> back");
                     return $resultRedirect->setPath('*/*/edit', ['id' => $model->getId(), '_current' => true]);
                 }
-                return $resultRedirect->setPath('*/*/',['linkgroup'=>$this->_getSession()->getGroupId()]);
+                return $resultRedirect->setPath('*/*/index');
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
                 $this->messageManager->addError($e->getMessage());
             } catch (\RuntimeException $e) {
@@ -65,6 +65,6 @@ class Save extends LinkAbstract
             $this->_getSession()->setFormData($data);
             return $resultRedirect->setPath('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
         }
-        return $resultRedirect->setPath('*/*/',['linkgroup'=>$this->_getSession()->getGroupId()]);
+        return $resultRedirect->setPath('*/*/index');
     }
 }

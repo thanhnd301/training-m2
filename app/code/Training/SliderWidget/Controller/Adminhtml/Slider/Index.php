@@ -32,12 +32,4 @@ class Index extends SliderAbstract
 
         return $resultPage;
     }
-
-    /*
-	 * Check permission via ACL resource
-	 */
-    protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('Training_SliderWidget::sliderwidget_slider');
-    }
 }

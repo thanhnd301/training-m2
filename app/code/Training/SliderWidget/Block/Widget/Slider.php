@@ -9,13 +9,46 @@
 namespace Training\SliderWidget\Block\Widget;
 
 use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Widget\Block\BlockInterface;
+use Training\SliderWidget\Model\ResourceModel\Banner\CollectionFactory;
 
 class Slider extends Template implements BlockInterface
 {
+    protected $_collectionFactory;
+
+    public function __construct(
+        Context $context,
+        CollectionFactory $collectionFactory,
+        array $data)
+    {
+        parent::__construct($context, $data);
+        $this->_collectionFactory = $collectionFactory;
+    }
+
     protected function _construct()
     {
         parent::_construct();
         $this->setTemplate('widget/slider.phtml');
+    }
+
+    public function getBannerHtml($sliderId)
+    {
+        $collection = $this->_collectionFactory->create();
+        $banners = $collection
+            ->addFieldToFilter('status',1)
+            ->addFieldToFilter('slider_id',$sliderId)
+            ->getData();
+        $html = "";
+        if($banners)
+        {
+            foreach ($banners as $banner)
+            {
+                $link = $this->getBaseUrl().$banner['link'];
+                $image = $this->getBaseUrl().'pub/media/sliderwidget/'.$banner['image'];
+                $html .= "<div><a href='$link'><img src='$image'/></a></div>";
+            }
+        }
+        return $html;
     }
 }

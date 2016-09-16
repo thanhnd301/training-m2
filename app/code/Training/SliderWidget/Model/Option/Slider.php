@@ -8,7 +8,6 @@
 
 namespace Training\SliderWidget\Model\Option;
 
-use Magento\Framework\DataObject;
 use Magento\Framework\Option\ArrayInterface;
 use Training\SliderWidget\Model\SliderFactory;
 

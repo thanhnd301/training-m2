@@ -25,7 +25,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="footerlink_grid_data_source" xsi:type="string">Training\FooterLinks\Model\ResourceModel\Link\Collection</item>
+                <item name="footerlink_list_data_source" xsi:type="string">Training\FooterLinks\Model\ResourceModel\Link\Collection</item>
             </argument>
         </arguments>
     </type>

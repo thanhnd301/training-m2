@@ -80,6 +80,7 @@ class SliderDataProvider extends AbstractDataProvider
             $this->loadedData[$slider->getId()] = ['general'=>$slider->getData()];
         }
 
+        $data = $this->getSession()->getFormData();
         if (!empty($data)) {
             $sliderId = isset($data['general']['slider_id']) ? $data['general']['slider_id'] : null;
             $this->loadedData[$sliderId] = $data;

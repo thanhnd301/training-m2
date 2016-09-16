@@ -13,6 +13,7 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use Training\SliderWidget\Model\BannerFactory;
+use Magento\Framework\View\Result\LayoutFactory;
 
 abstract class BannerAbstract extends Action
 {
@@ -44,6 +45,8 @@ abstract class BannerAbstract extends Action
      */
     protected $_bannerFactory;
 
+    protected $resultLayoutFactory;
+
     /**
      * @param Context $context
      * @param Registry $coreRegistry
@@ -54,12 +57,14 @@ abstract class BannerAbstract extends Action
         Context $context,
         Registry $coreRegistry,
         PageFactory $resultPageFactory,
+        LayoutFactory $resultLayoutFactory,
         BannerFactory $bannerFactory
     ) {
         parent::__construct($context);
         $this->_coreRegistry = $coreRegistry;
         $this->_resultPageFactory = $resultPageFactory;
         $this->_bannerFactory = $bannerFactory;
+        $this->resultLayoutFactory = $resultLayoutFactory;
     }
 
     /**
@@ -69,6 +74,6 @@ abstract class BannerAbstract extends Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Training_SliderWidget::sliderwidget_slider');
+        return $this->_authorization->isAllowed('Training_SliderWidget::sliderwidget_banner');
     }
 }

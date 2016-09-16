@@ -6,7 +6,7 @@
  * Time: 9:35 AM
  */
 
-namespace Training\FooterLinks\Block\Adminhtml\Edit\Link;
+namespace Training\SliderWidget\Block\Adminhtml\Edit\Banner;
 
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
@@ -19,14 +19,14 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
      */
     public function getButtonData()
     {
-        $linkId = $this->_registry->registry('link_id');
+        $bannerId = $this->_registry->registry('banner_id');
         $onlickAction = '';
 
-        if($linkId)
+        if($bannerId)
         {
             $onlickAction = 'deleteConfirm(\'' . __(
                     'Are you sure you want to do this?'
-                ) . '\', \'' . $this->getDeleteUrl($linkId) . '\')';
+                ) . '\', \'' . $this->getDeleteUrl($bannerId) . '\')';
         }
 
         return [

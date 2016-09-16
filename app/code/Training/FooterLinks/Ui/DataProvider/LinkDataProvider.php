@@ -33,9 +33,10 @@ class LinkDataProvider extends AbstractDataProvider
 
     public function getData()
     {
-        $groupId = $this->request->getParam('linkgroup');
-        //$data = $this->getCollection()->addFieldToFilter('group_id',$groupId)->toArray();
+        //$groupId = $this->request->getParam('linkgroup');
+//        $data = $this->getCollection()->addFieldToFilter('group_id',$groupId)->toArray();
         $data = $this->getCollection()->addFieldToFilter('group_id',1)->toArray();
+
         return $data;
     }
 }

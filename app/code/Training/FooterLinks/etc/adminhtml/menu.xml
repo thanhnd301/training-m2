@@ -3,7 +3,8 @@
     <menu>
         <add id="Training_FooterLinks::training" title="Training" module="Training_FooterLinks" sortOrder="15" dependsOnModule="Training_FooterLinks" resource="Training_FooterLinks::training"/>
         <add id="Training_FooterLinks::footerlinks" title="Footer Links Manager" module="Training_FooterLinks" sortOrder="10" parent="Training_FooterLinks::training" resource="Training_FooterLinks::training" />
-        <add id="Training_FooterLinks::footerlinks_linkgroup" title="Manage Links" module="Training_FooterLinks" sortOrder="10" parent="Training_FooterLinks::footerlinks" action="footerlinks/linkgroup" resource="Training_FooterLinks::footerlinks_linkgroup"/>
-        <add id="Training_FooterLinks::footerlinks_config" title="Configuarations" module="Training_FooterLinks" sortOrder="10" parent="Training_FooterLinks::footerlinks" action="adminhtml/system_config/edit/section/footerlinks" resource="Training_FooterLinks::footerlinks_config"/>
+        <add id="Training_FooterLinks::footerlinks_linkgroup" title="Manage Link Group" module="Training_FooterLinks" sortOrder="10" parent="Training_FooterLinks::footerlinks" action="footerlinks/linkgroup" resource="Training_FooterLinks::footerlinks_linkgroup"/>
+        <add id="Training_FooterLinks::footerlinks_link" title="Manage Footer Link" module="Training_FooterLinks" sortOrder="20" parent="Training_FooterLinks::footerlinks" action="footerlinks/link" resource="Training_FooterLinks::footerlinks_link"/>
+        <add id="Training_FooterLinks::footerlinks_config" title="Configuarations" module="Training_FooterLinks" sortOrder="30" parent="Training_FooterLinks::footerlinks" action="adminhtml/system_config/edit/section/footerlinks" resource="Training_FooterLinks::footerlinks_config"/>
     </menu>
 </config>

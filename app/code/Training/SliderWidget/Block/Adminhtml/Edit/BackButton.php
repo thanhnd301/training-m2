@@ -6,7 +6,7 @@
  * Time: 9:26 AM
  */
 
-namespace Training\SliderWidget\Block\Adminhtml\Edit\Slider;
+namespace Training\SliderWidget\Block\Adminhtml\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Training\FooterLinks\Block\Adminhtml\Edit\GenericButton;

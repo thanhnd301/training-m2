@@ -84,6 +84,20 @@
                 </item>
             </argument>
         </field>
+        <field name="group_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Training\FooterLinks\Ui\Component\Listing\Column\Options\Group</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Link Group</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">footerlink</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
         <field name="status">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Training\FooterLinks\Model\Status</item>

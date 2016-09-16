@@ -17,7 +17,7 @@ class Banner extends AbstractModel implements IdentityInterface
 
     protected function _construct()
     {
-        $this->_init('Training/SliderWidget/Model/Banner');
+        $this->_init('Training\SliderWidget\Model\ResourceModel\Banner');
     }
 
     public function getIdentities()

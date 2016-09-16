@@ -44,6 +44,6 @@ class MassDelete extends LinkAbstract
 
         }
 
-        $this->_redirect('*/*/index',['linkgroup'=>$this->_getSession()->getGroupId()]);
+        $this->_redirect('*/*/index');
     }
 }

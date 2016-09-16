@@ -3,6 +3,7 @@
     <menu>
         <add id="Training_SliderWidget::sliderwidget" title="Slider Manager" module="Training_SliderWidget" sortOrder="20" parent="Training_FooterLinks::training" resource="Training_FooterLinks::training" />
         <add id="Training_SliderWidget::sliderwidget_slider" title="Manage Slider" module="Training_SliderWidget" sortOrder="10" parent="Training_SliderWidget::sliderwidget" action="sliderwidget/slider" resource="Training_SliderWidget::sliderwidget_slider"/>
-        <add id="Training_SliderWidget::sliderwidget_config" title="Configuarations" module="Training_SliderWidget" sortOrder="20" parent="Training_SliderWidget::sliderwidget" action="adminhtml/system_config/edit/section/sliderwidget" resource="Training_SliderWidget::sliderwidget_config"/>
+        <add id="Training_SliderWidget::sliderwidget_banner" title="Manage Banner" module="Training_SliderWidget" sortOrder="20" parent="Training_SliderWidget::sliderwidget" action="sliderwidget/banner" resource="Training_SliderWidget::sliderwidget_banner"/>
+        <add id="Training_SliderWidget::sliderwidget_config" title="Configuarations" module="Training_SliderWidget" sortOrder="30" parent="Training_SliderWidget::sliderwidget" action="adminhtml/system_config/edit/section/sliderwidget" resource="Training_SliderWidget::sliderwidget_config"/>
     </menu>
 </config>

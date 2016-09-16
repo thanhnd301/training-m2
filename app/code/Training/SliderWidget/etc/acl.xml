@@ -6,8 +6,9 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Training_FooterLinks::training" title="Training" sortOrder="20">
                     <resource id="Training_SliderWidget::sliderwidget" title="Slider Manager" sortOrder="20">
-                        <resource id="Training_SliderWidget::sliderwidget_slider" title="Manage Links" sortOrder="1"/>
-                        <resource id="Training_SliderWidget::sliderwidget_config" title="Configurations" sortOrder="2"/>
+                        <resource id="Training_SliderWidget::sliderwidget_slider" title="Manage Slider" sortOrder="1"/>
+                        <resource id="Training_SliderWidget::sliderwidget_banner" title="Manage Banner" sortOrder="2"/>
+                        <resource id="Training_SliderWidget::sliderwidget_config" title="Configurations" sortOrder="3"/>
                     </resource>
                 </resource>
 

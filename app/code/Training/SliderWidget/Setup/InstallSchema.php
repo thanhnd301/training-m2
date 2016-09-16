@@ -39,12 +39,6 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable'=>false],
             'Slider Title'
         )->addColumn(
-            'store_id',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            255,
-            ['nullable'=>false],
-            'Store Ids'
-        )->addColumn(
             'creation_time',
             \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
             null,
@@ -99,7 +93,7 @@ class InstallSchema implements InstallSchemaInterface
             'slider_id',
             \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
             null,
-            ['nullable'=>false],
+            ['nullable'=>true],
             'Slider Id'
         )->addColumn(
             'creattion_time',
@@ -119,6 +113,12 @@ class InstallSchema implements InstallSchemaInterface
             null,
             ['nullable'=>false],
             'Show in front end'
+        )->addForeignKey(
+            'fk_banner_slider',
+            'slider_id',
+            'sliderwidget_slider',
+            'slider_id',
+            \Magento\Framework\DB\Ddl\Table::ACTION_SET_NULL
         );
         $connection->createTable($table);
 

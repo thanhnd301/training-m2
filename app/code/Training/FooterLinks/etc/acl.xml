@@ -7,7 +7,8 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Training_FooterLinks::training" title="Training" sortOrder="20">
                     <resource id="Training_FooterLinks::footerlinks" title="Footer Links Manager" sortOrder="10">
-                        <resource id="Training_FooterLinks::footerlinks_linkgroup" title="Manage Links" sortOrder="1"/>
+                        <resource id="Training_FooterLinks::footerlinks_linkgroup" title="Manage Footer Link Group" sortOrder="1"/>
+                        <resource id="Training_FooterLinks::footerlinks_link" title="Manage Footer Link" sortOrder="1"/>
                         <resource id="Training_FooterLinks::footerlinks_config" title="Configurations" sortOrder="2"/>
                     </resource>
                 </resource>

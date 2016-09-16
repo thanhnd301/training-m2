@@ -80,6 +80,7 @@ class GroupDataProvider extends AbstractDataProvider
             $this->loadedData[$group->getId()] = ['general'=>$group->getData()];
         }
 
+        $data = $this->getSession()->getFormData();
         if (!empty($data)) {
             $groupId = isset($data['general']['group_id']) ? $data['general']['group_id'] : null;
             $this->loadedData[$groupId] = $data;

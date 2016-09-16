@@ -7,12 +7,13 @@
             <item name="deps" xsi:type="string">slider_form.slider_form_data_source</item>
         </item>
         <item name="label" xsi:type="string" translate="true">Slider Informations</item>
+        <item name="sortOrder" xsi:type="number">10</item>
         <item name="layout" xsi:type="array">
             <item name="type" xsi:type="string">tabs</item>
             <item name="navContainerName" xsi:type="string">left</item>
         </item>
         <item name="buttons" xsi:type="array">
-            <item name="back" xsi:type="string">Training\SliderWidget\Block\Adminhtml\Edit\Slider\BackButton</item>
+            <item name="back" xsi:type="string">Training\SliderWidget\Block\Adminhtml\Edit\BackButton</item>
             <item name="delete" xsi:type="string">Training\SliderWidget\Block\Adminhtml\Edit\Slider\DeleteButton</item>
             <item name="reset" xsi:type="string">Training\SliderWidget\Block\Adminhtml\Edit\ResetButton</item>
             <item name="save" xsi:type="string">Training\SliderWidget\Block\Adminhtml\Edit\SaveButton</item>
@@ -49,7 +50,7 @@
                     <item name="visible" xsi:type="boolean">false</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">linkgroup</item>
+                    <item name="source" xsi:type="string">general</item>
                     <item name="dataScope" xsi:type="string">group_id</item>
                 </item>
             </argument>
@@ -61,7 +62,7 @@
                     <item name="label" xsi:type="string" translate="true">Is Active</item>
                     <item name="formElement" xsi:type="string">checkbox</item>
                     <item name="prefer" xsi:type="string">toggle</item>
-                    <item name="source" xsi:type="string">linkgroup</item>
+                    <item name="source" xsi:type="string">general</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                     <item name="dataScope" xsi:type="string">is_active</item>
                     <item name="valueMap" xsi:type="array">
@@ -78,25 +79,9 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Title</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">page</item>
+                    <item name="source" xsi:type="string">general</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">title</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="store_id">
-            <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Store View</item>
-                    <item name="formElement" xsi:type="string">multiselect</item>
-                    <item name="source" xsi:type="string">linkgroup</item>
-                    <item name="dataScope" xsi:type="string">store_id</item>
-                    <item name="default" xsi:type="string">0</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>
