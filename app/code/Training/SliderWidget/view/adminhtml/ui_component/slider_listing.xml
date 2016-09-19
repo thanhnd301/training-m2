@@ -151,7 +151,7 @@
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">group_id</item>
+                    <item name="indexField" xsi:type="string">slider_id</item>
                 </item>
             </argument>
         </selectionsColumn>

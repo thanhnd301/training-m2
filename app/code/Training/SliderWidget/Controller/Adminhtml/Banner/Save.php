@@ -50,15 +50,18 @@ class Save extends BannerAbstract
                 $bannerData = $data["general"];
                 $bannerId = isset($bannerData["id"]) ? $bannerData["id"]:null;
 
-                if ($bannerId) {
-                    $banner = $model->load($bannerId);
-                    $bannerData = array_merge($banner,$bannerData);
+                // Save image
+                if (isset($bannerData['image']))
+                {
+                    $image = $bannerData['image'][0]['name'];
+                    $this->imageUploader->moveFileFromTmp($image);
+                    $bannerData['image'] = $image;
                 }
 
-                // Save image
-                $image = $bannerData['image'][0]['name'];
-                $this->imageUploader->moveFileFromTmp($image);
-                $bannerData['image'] = $image;
+                if ($bannerId) {
+                    $banner = $model->load($bannerId)->getData();
+                    $bannerData = array_merge($banner,$bannerData);
+                }
 
                 // Update time
                 $updateTime = date('Y-m-d H:i:s');
@@ -69,6 +72,7 @@ class Save extends BannerAbstract
                 $bannerData["update_time"] = $updateTime;
 
                 $model->setData($bannerData);
+                var_dump($model->getData());
                 $model->save();
 
                 $this->messageManager->addSuccess(__('Banner saved'));

@@ -50,7 +50,7 @@
                     <item name="visible" xsi:type="boolean">false</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">general</item>
+                    <item name="source" xsi:type="string">banner</item>
                     <item name="dataScope" xsi:type="string">banner_id</item>
                 </item>
             </argument>
@@ -62,7 +62,7 @@
                     <item name="label" xsi:type="string" translate="true">Show in Slider</item>
                     <item name="formElement" xsi:type="string">checkbox</item>
                     <item name="prefer" xsi:type="string">toggle</item>
-                    <item name="source" xsi:type="string">general</item>
+                    <item name="source" xsi:type="string">banner</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                     <item name="dataScope" xsi:type="string">status</item>
                     <item name="valueMap" xsi:type="array">
@@ -79,7 +79,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Title</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">general</item>
+                    <item name="source" xsi:type="string">banner</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">title</item>
                     <item name="validation" xsi:type="array">
@@ -94,7 +94,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Target Link</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">general</item>
+                    <item name="source" xsi:type="string">banner</item>
                     <item name="sortOrder" xsi:type="number">30</item>
                     <item name="dataScope" xsi:type="string">link</item>
                     <item name="validation" xsi:type="array">
@@ -110,7 +110,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Choose Slider</item>
                     <item name="formElement" xsi:type="string">select</item>
-                    <item name="source" xsi:type="string">general</item>
+                    <item name="source" xsi:type="string">banner</item>
                     <item name="sortOrder" xsi:type="number">40</item>
                     <item name="dataScope" xsi:type="string">slider_id</item>
                     <item name="validation" xsi:type="array">
@@ -125,11 +125,12 @@
                     <item name="dataType" xsi:type="string">string</item>
                     <item name="label" xsi:type="string" translate="true">Image</item>
                     <item name="formElement" xsi:type="string">fileUploader</item>
+                    <!--<item name="formElement" xsi:type="string">file</item>-->
                     <item name="source" xsi:type="string">banner</item>
                     <item name="sortOrder" xsi:type="number">50</item>
                     <item name="required" xsi:type="boolean">false</item>
                     <item name="dataScope" xsi:type="string">image</item>
-                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/el/ement/uploader/uploader</item>
                     <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
                     <item name="uploaderConfig" xsi:type="array">
                         <item name="url" xsi:type="url" path="sliderwidget/banner_image/upload"/>

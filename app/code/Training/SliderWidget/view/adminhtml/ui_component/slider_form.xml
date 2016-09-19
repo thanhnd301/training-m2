@@ -50,7 +50,7 @@
                     <item name="visible" xsi:type="boolean">false</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">general</item>
+                    <item name="source" xsi:type="string">slider</item>
                     <item name="dataScope" xsi:type="string">group_id</item>
                 </item>
             </argument>
@@ -62,7 +62,7 @@
                     <item name="label" xsi:type="string" translate="true">Is Active</item>
                     <item name="formElement" xsi:type="string">checkbox</item>
                     <item name="prefer" xsi:type="string">toggle</item>
-                    <item name="source" xsi:type="string">general</item>
+                    <item name="source" xsi:type="string">slider</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                     <item name="dataScope" xsi:type="string">is_active</item>
                     <item name="valueMap" xsi:type="array">
@@ -79,7 +79,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Title</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">general</item>
+                    <item name="source" xsi:type="string">slider</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">title</item>
                     <item name="validation" xsi:type="array">
