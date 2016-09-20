@@ -29,9 +29,9 @@ class Save extends LinkAbstract
                 $model = $this->_linkFactory->create();
 
                 $linkData = $data["footerlink"];
-                $linkId = isset($linkData["id"]) ? $linkData["id"]:null;
+                $linkId = isset($linkData["link_id"]) ? $linkData["link_id"]:null;
                 if ($linkId) {
-                    $link = $model->load($linkId);
+                    $link = $model->load($linkId)->getData();
                     $linkData = array_merge($link,$linkData);
                 }
 

@@ -28,19 +28,21 @@ class Save extends GroupAbstract
                 $model = $this->_groupFactory->create();
 
                 $groupData = $data["general"];
-                $groupId = isset($groupData["id"]) ? $groupData["id"]:null;
+                $groupId = isset($groupData["group_id"]) ? $groupData["group_id"]:null;
 
-                if ($groupId) {
-                    $group = $model->load($groupId);
-                    $groupData = array_merge($group,$groupData);
-                }
-
+                // Check the same title
                 $group = $model->load($groupData['title'],'title')->getData();
-                if($group)
+                if($group && !$groupId)
                 {
                     $this->messageManager->addError('This group already exists.');
                     $this->_redirect('*/*/new', ['_current' => true]);
                     return;
+                }
+
+                // Merge form data and db data
+                if ($groupId) {
+                    $group = $model->load($groupId)->getData();
+                    $groupData = array_merge($group,$groupData);
                 }
 
                 // Update time

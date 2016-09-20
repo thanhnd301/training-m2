@@ -28,19 +28,21 @@ class Save extends SliderAbstract
                 $model = $this->_sliderFactory->create();
 
                 $sliderData = $data["general"];
-                $sliderId = isset($sliderData["id"]) ? $sliderData["id"]:null;
+                $sliderId = isset($sliderData["slider_id"]) ? $sliderData["slider_id"]:null;
 
-                if ($sliderId) {
-                    $slider = $model->load($sliderId);
-                    $sliderData = array_merge($slider,$sliderData);
-                }
-
+                // Check the same title
                 $slider = $model->load($sliderData['title'],'title')->getData();
-                if($slider)
+                if($slider && !$sliderId)
                 {
                     $this->messageManager->addError('This slider already exists.');
                     $this->_redirect('*/*/new', ['_current' => true]);
                     return;
+                }
+
+                // Merge form data and db data
+                if ($sliderId) {
+                    $slider = $model->load($sliderId)->getData();
+                    $sliderData = array_merge($slider,$sliderData);
                 }
 
                 // Update time

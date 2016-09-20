@@ -18,20 +18,6 @@ use Training\SliderWidget\Model\ImageUploader;
 
 class Save extends BannerAbstract
 {
-    protected $imageUploader;
-
-    public function __construct(
-        Context $context,
-        Registry $coreRegistry,
-        PageFactory $resultPageFactory,
-        LayoutFactory $resultLayoutFactory,
-        ImageUploader $imageUploader,
-        BannerFactory $bannerFactory)
-    {
-        parent::__construct($context, $coreRegistry, $resultPageFactory, $resultLayoutFactory, $bannerFactory);
-        $this->imageUploader = $imageUploader;
-    }
-
     /**
      * @return void
      */
@@ -56,7 +42,7 @@ class Save extends BannerAbstract
                     $bannerData['image'] = $image;
                 }
 
-                $bannerId = isset($bannerData["id"]) ? $bannerData["id"]:null;
+                $bannerId = isset($bannerData["banner_id"]) ? $bannerData["banner_id"]:null;
                 if ($bannerId) {
                     $banner = $model->load($bannerId)->getData();
                     $bannerData = array_merge($banner,$bannerData);
