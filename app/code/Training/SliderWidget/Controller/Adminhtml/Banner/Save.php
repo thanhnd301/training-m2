@@ -48,16 +48,15 @@ class Save extends BannerAbstract
                 $model = $this->_bannerFactory->create();
 
                 $bannerData = $data["general"];
-                $bannerId = isset($bannerData["id"]) ? $bannerData["id"]:null;
 
                 // Save image
-                if (isset($bannerData['image']))
+                $image = $this->_uploadImage('image');
+                if($image)
                 {
-                    $image = $bannerData['image'][0]['name'];
-                    $this->imageUploader->moveFileFromTmp($image);
                     $bannerData['image'] = $image;
                 }
 
+                $bannerId = isset($bannerData["id"]) ? $bannerData["id"]:null;
                 if ($bannerId) {
                     $banner = $model->load($bannerId)->getData();
                     $bannerData = array_merge($banner,$bannerData);
@@ -72,15 +71,14 @@ class Save extends BannerAbstract
                 $bannerData["update_time"] = $updateTime;
 
                 $model->setData($bannerData);
-                var_dump($model->getData());
                 $model->save();
 
                 $this->messageManager->addSuccess(__('Banner saved'));
                 $this->_getSession()->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    var_dump($model->getData());die("<br/> back");
                     return $resultRedirect->setPath('*/*/edit', ['id' => $model->getId(), '_current' => true]);
                 }
+
                 return $resultRedirect->setPath('*/*/');
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
                 $this->messageManager->addError($e->getMessage());
@@ -94,5 +92,48 @@ class Save extends BannerAbstract
             return $resultRedirect->setPath('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
         }
         return $resultRedirect->setPath('*/*/');
+    }
+
+    private function _uploadImage($scope)
+    {
+        $this->__prepareImage();
+
+        $adapter = $this->_objectManager->create('Magento\Framework\HTTP\Adapter\FileTransferFactory')->create();
+        if ($adapter->isUploaded($scope))
+        {
+            if (!$adapter->isValid($scope)) {
+                throw new \Magento\Framework\Model\Exception(__('Uploaded image is not valid.'));
+            }
+
+            $uploader = $this->_objectManager->create('Magento\MediaStorage\Model\File\UploaderFactory')
+                ->create(['fileId' => $scope]);
+
+            $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
+            $uploader->setAllowRenameFiles(true);
+            $uploader->setFilesDispersion(false);
+            $uploader->setAllowCreateFolders(true);
+
+            $path = $this->_objectManager->create('Magento\Framework\Filesystem');
+            $path = $path->getDirectoryRead(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA)
+                ->getAbsolutePath('sliderwidget');
+
+            if ($uploader->save($path)) {
+                return $uploader->getUploadedFileName();
+            }
+            return false;
+        }
+    }
+
+    private function __prepareImage()
+    {
+        $imageInfo = [
+            'name'=>$_FILES['general']['name']['image'],
+            'type'=>$_FILES['general']['type']['image'],
+            'tmp_name'=>$_FILES['general']['tmp_name']['image'],
+            'error'=>$_FILES['general']['error']['image'],
+            'size'=>$_FILES['general']['size']['image']
+        ];
+
+        $_FILES = ['image'=>$imageInfo];
     }
 }
