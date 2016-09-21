@@ -5,9 +5,11 @@
     <body>
         <referenceContainer name="content">
             <uiComponent name="slider_form"/>
-            <!--<referenceBlock name="slider_form">
-                <block acl="Training_SliderWidget::sliderwidget_banner" class="Training\SliderWidget\Block\Adminhtml\SliderBannerTab" name="orders" />
-            </referenceBlock>-->
+            <referenceBlock name="slider_form">
+                <block acl="Training_SliderWidget::sliderwidget_banner"
+                       class="Training\SliderWidget\Block\Adminhtml\SliderBannerTab"
+                       name="bannertab" />
+            </referenceBlock>
         </referenceContainer>
     </body>
 </page>

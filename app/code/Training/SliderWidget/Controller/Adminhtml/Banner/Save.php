@@ -18,11 +18,29 @@ use Training\SliderWidget\Model\ImageUploader;
 
 class Save extends BannerAbstract
 {
+    protected $imageUploader;
+
+    public function __construct(
+        Context $context,
+        Registry $coreRegistry,
+        PageFactory $resultPageFactory,
+        LayoutFactory $resultLayoutFactory,
+        ImageUploader $imageUploader,
+        BannerFactory $bannerFactory)
+    {
+        parent::__construct($context, $coreRegistry, $resultPageFactory, $resultLayoutFactory, $bannerFactory);
+        $this->imageUploader = $imageUploader;
+    }
+
     /**
      * @return void
      */
     public function execute()
     {
+        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/slider.log');
+        $logger = new \Zend\Log\Logger();
+        $logger->addWriter($writer);
+
         $data = $this->getRequest()->getPostValue();
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
@@ -36,11 +54,13 @@ class Save extends BannerAbstract
                 $bannerData = $data["general"];
 
                 // Save image
-                $image = $this->_uploadImage('image');
-                if($image)
+                //$image = $this->_uploadImage('image');
+                $image = $this->_imageUploader($bannerData);
+                $bannerData['image'] = $image;
+                /*if($image)
                 {
                     $bannerData['image'] = $image;
-                }
+                }*/
 
                 $bannerId = isset($bannerData["banner_id"]) ? $bannerData["banner_id"]:null;
                 if ($bannerId) {
@@ -72,6 +92,8 @@ class Save extends BannerAbstract
                 $this->messageManager->addError($e->getMessage());
             } catch (\Exception $e) {
                 $this->messageManager->addException($e, __('Something went wrong while saving the banner'));
+                $logger->info($e->getMessage());
+                $logger->info($e->getTraceAsString());
             }
 
             $this->_getSession()->setFormData($data);
@@ -80,34 +102,17 @@ class Save extends BannerAbstract
         return $resultRedirect->setPath('*/*/');
     }
 
-    private function _uploadImage($scope)
+    private function _imageUploader($bannerData)
     {
-        $this->__prepareImage();
+        $image = '';
 
-        $adapter = $this->_objectManager->create('Magento\Framework\HTTP\Adapter\FileTransferFactory')->create();
-        if ($adapter->isUploaded($scope))
+        if(isset($bannerData['image']))
         {
-            if (!$adapter->isValid($scope)) {
-                throw new \Magento\Framework\Model\Exception(__('Uploaded image is not valid.'));
-            }
-
-            $uploader = $this->_objectManager->create('Magento\MediaStorage\Model\File\UploaderFactory')
-                ->create(['fileId' => $scope]);
-
-            $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
-            $uploader->setAllowRenameFiles(true);
-            $uploader->setFilesDispersion(false);
-            $uploader->setAllowCreateFolders(true);
-
-            $path = $this->_objectManager->create('Magento\Framework\Filesystem');
-            $path = $path->getDirectoryRead(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA)
-                ->getAbsolutePath('sliderwidget');
-
-            if ($uploader->save($path)) {
-                return $uploader->getUploadedFileName();
-            }
-            return false;
+            $image = $bannerData['image'][0]['name'];
+            $this->imageUploader->moveFileFromTmp($image);
         }
+
+        return $image;
     }
 
     private function __prepareImage()

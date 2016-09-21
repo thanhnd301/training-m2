@@ -30,6 +30,7 @@ class BannerDataProvider extends AbstractDataProvider
      */
     protected $session;
 
+    protected $_storeManger;
     /**
      * @param string $name
      * @param string $primaryFieldName
@@ -43,11 +44,13 @@ class BannerDataProvider extends AbstractDataProvider
         $primaryFieldName,
         $requestFieldName,
         BannerCollectionFactory $bannerCollectionFactory,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
         array $meta = [],
         array $data = []
     ) {
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->collection = $bannerCollectionFactory->create();
+        $this->_storeManger = $storeManager;
     }
 
     /**
@@ -77,6 +80,13 @@ class BannerDataProvider extends AbstractDataProvider
 
         /** @var $group \Training\SliderWidget\Model\Slider */
         foreach ($items as $banner) {
+            $image = $banner['image'];
+            $baseUrl = $this->_storeManger->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+            $imageUrl = $baseUrl.'sliderwidget/'.$image;
+            $banner['image'] = array([
+                'name'=>$image,
+                'url'=>$imageUrl
+            ]);
             $this->loadedData[$banner->getId()] = ['general'=>$banner->getData()];
         }
 

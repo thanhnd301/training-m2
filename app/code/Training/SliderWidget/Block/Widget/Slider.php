@@ -44,7 +44,7 @@ class Slider extends Template implements BlockInterface
         {
             foreach ($banners as $banner)
             {
-                $link = $this->getBaseUrl().$banner['link'];
+                $link = $banner['link'];
                 $image = $this->getBaseUrl().'pub/media/sliderwidget/'.$banner['image'];
                 $html .= "<div><a href='$link'><img src='$image'/></a></div>";
             }

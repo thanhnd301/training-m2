@@ -18,6 +18,9 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $_coreRegistry;
 
     protected $collectionFactory;
+
+    protected $_bannerCollectionFactory;
+
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -26,13 +29,15 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
-        \Training\SliderWidget\Model\ResourceModel\Banner\CollectionFactory $collectionFactory,
+        \Training\SliderWidget\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
+        \Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory $collectionFactory,
         \Magento\Framework\Registry $registry,
         array $data = []
     ) {
         $this->_coreRegistry = $registry;
         $this->collectionFactory = $collectionFactory;
-        parent::__construct($context, $data);
+        $this->_bannerCollectionFactory = $bannerCollectionFactory;
+        parent::__construct($context, $backendHelper,$data);
     }
 
     /**
@@ -42,8 +47,13 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
     {
         parent::_construct();
         $this->setId('slider_banners_grid');
-        $this->setDefaultSort('banner_id', 'asc');
+        $this->setDefaultSort('banner_id');
+        $this->setDefaultDir('ASC');
         $this->setUseAjax(true);
+
+        if ($this->getRequest()->getParam('id')) {
+            $this->setDefaultFilter(['banner_id' => 1]);
+        }
     }
 
     /**
@@ -53,7 +63,8 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareCollection()
     {
-        $collection = $this->_collectionFactory->create()->addFieldToSelect('*');
+//        $collection = $this->_collectionFactory->create()->addFieldToSelect('*');
+        $collection = $this->collectionFactory->getReport('banner_listing_data_source')->addFieldToSelect('*');
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -64,9 +75,61 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _prepareColumns()
     {
         $this->addColumn('banner_id', ['header' => __('Banner'), 'width' => '100', 'index' => 'banner_id']);
-
+        $this->addColumn('image', [
+            'header' => __('Image'),
+            'index' => 'image',
+            'renderer'=> '\Training\SliderWidget\Block\Adminhtml\Edit\Tab\Banners\Image'
+        ]);
         $this->addColumn('title', ['header' => __('Title'), 'index' => 'title']);
+        $this->addColumn('link', [
+            'header' => __('Target Link'),
+            'index' => 'link',
+            'renderer'=> '\Training\SliderWidget\Block\Adminhtml\Edit\Tab\Banners\Link'
+        ]);
+        $this->addColumn('status', [
+            'header' => __('Status'),
+            'index' => 'status',
+            //'type'=>'select',
+            //'values' => array('Enabled','Disabled')
+        ]);
 
         return parent::_prepareColumns();
+    }
+
+    protected function _getSelectedBanners()
+    {
+        $sliderId = $this->getRequest()->getParam('id');
+        $bannerIds = $this->_bannerCollectionFactory->create()
+            ->addFieldToFilter('slider_id',$sliderId)
+            ->getAllIds();
+
+        return $bannerIds;
+    }
+
+    /**
+     * Add filter
+     *
+     * @param Column $column
+     * @return $this
+     */
+    protected function _addColumnFilterToCollection($column)
+    {
+        // Set custom filter for in product flag
+        if ($column->getId() == 'banner_id') {
+            $bannerIds = $this->_getSelectedBanners();
+            if (empty($bannerIds)) {
+                $bannerIds = 0;
+            }
+            if ($column->getFilter()->getValue()) {
+                $this->getCollection()->addFieldToFilter('banner_id', ['in' => $bannerIds]);
+            } else {
+                if ($bannerIds) {
+                    $this->getCollection()->addFieldToFilter('banner_id', ['nin' => $bannerIds]);
+                }
+            }
+        } else {
+            parent::_addColumnFilterToCollection($column);
+        }
+        return $this;
     }
 }
