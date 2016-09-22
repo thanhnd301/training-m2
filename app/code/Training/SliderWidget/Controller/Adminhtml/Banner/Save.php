@@ -37,10 +37,6 @@ class Save extends BannerAbstract
      */
     public function execute()
     {
-        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/slider.log');
-        $logger = new \Zend\Log\Logger();
-        $logger->addWriter($writer);
-
         $data = $this->getRequest()->getPostValue();
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
@@ -87,8 +83,6 @@ class Save extends BannerAbstract
                 $this->messageManager->addError($e->getMessage());
             } catch (\Exception $e) {
                 $this->messageManager->addException($e, __('Something went wrong while saving the banner'));
-                $logger->info($e->getMessage());
-                $logger->info($e->getTraceAsString());
             }
 
             $this->_getSession()->setFormData($data);
