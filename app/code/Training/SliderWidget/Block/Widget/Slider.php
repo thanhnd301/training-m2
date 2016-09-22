@@ -16,14 +16,17 @@ use Training\SliderWidget\Model\ResourceModel\Banner\CollectionFactory;
 class Slider extends Template implements BlockInterface
 {
     protected $_collectionFactory;
+    protected $_scopeConfig;
 
     public function __construct(
         Context $context,
         CollectionFactory $collectionFactory,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         array $data)
     {
         parent::__construct($context, $data);
         $this->_collectionFactory = $collectionFactory;
+        $this->_scopeConfig = $scopeConfig;
     }
 
     protected function _construct()
@@ -45,8 +48,12 @@ class Slider extends Template implements BlockInterface
             foreach ($banners as $banner)
             {
                 $link = $banner['link'];
-                $image = $this->getBaseUrl().'pub/media/sliderwidget/'.$banner['image'];
-                $html .= "<div><a href='$link'><img src='$image'/></a></div>";
+                if($banner['image'])
+                {
+                    $image = $this->getBaseUrl().'pub/media/sliderwidget/'.$banner['image'];
+                    $html .= "<div><a href='$link'><img src='$image'/></a></div>";
+                }
+
             }
         }
         return $html;
@@ -54,7 +61,11 @@ class Slider extends Template implements BlockInterface
 
     public function canShowInFrontEnd()
     {
-        $isEnabled=$this->getConfigValue('sliderwidget/general/enable_in_frontend');
+        $isEnabled = $this->_scopeConfig->getValue(
+            'sliderwidget/general/enable_in_frontend',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+
         if($isEnabled)
         {
             return true;

@@ -2,15 +2,13 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="footer_links"/>
     <body>
-        <referenceBlock name="footer_links" remove="true"/>
         <referenceContainer name="footer">
             <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-" template="subscribe.phtml"/>
             <block class="Training\FooterLinks\Block\Link"
                    ifconfig="footerlinks/general/enable_in_frontend"
                    template="link.phtml"
                    before="copyright"
-                   name="custom_footer_links">
-            </block>
+                   name="custom_footer_links"/>
         </referenceContainer>
     </body>
 </page>

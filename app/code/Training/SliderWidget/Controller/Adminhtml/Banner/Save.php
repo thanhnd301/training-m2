@@ -99,11 +99,9 @@ class Save extends BannerAbstract
 
     private function _imageUploader($bannerData)
     {
-        $image = '';
-
-        if(isset($bannerData['image']))
+        $image = $bannerData['image'][0]['name'];
+        if(count($bannerData['image'][0]) > 2)
         {
-            $image = $bannerData['image'][0]['name'];
             $this->imageUploader->moveFileFromTmp($image);
         }
 
