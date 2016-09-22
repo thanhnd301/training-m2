@@ -63,6 +63,10 @@ class Thumbnail extends Column
             $fieldName = $this->getData('name');
             foreach ($dataSource['data']['items'] as & $item) {
                 $filename = $item['image'];
+                if(!$filename)
+                {
+                    $filename = 'no_image_available.svg';
+                }
                 $item[$fieldName . '_src'] = $this->imageHelper->getBaseUrl().$filename;
                 $item[$fieldName . '_alt'] = $this->getAlt($item) ?: $filename;
                 $item[$fieldName . '_orig_src'] = $this->imageHelper->getBaseUrl().$filename;

@@ -6,9 +6,11 @@
         <referenceContainer name="footer">
             <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-" template="subscribe.phtml"/>
             <block class="Training\FooterLinks\Block\Link"
+                   ifconfig="footerlinks/general/enable_in_frontend"
                    template="link.phtml"
                    before="copyright"
-                   name="custom_footer_links"/>
+                   name="custom_footer_links">
+            </block>
         </referenceContainer>
     </body>
 </page>

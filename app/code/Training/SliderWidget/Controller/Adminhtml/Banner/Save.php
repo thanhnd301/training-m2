@@ -54,13 +54,8 @@ class Save extends BannerAbstract
                 $bannerData = $data["general"];
 
                 // Save image
-                //$image = $this->_uploadImage('image');
                 $image = $this->_imageUploader($bannerData);
                 $bannerData['image'] = $image;
-                /*if($image)
-                {
-                    $bannerData['image'] = $image;
-                }*/
 
                 $bannerId = isset($bannerData["banner_id"]) ? $bannerData["banner_id"]:null;
                 if ($bannerId) {
@@ -113,18 +108,5 @@ class Save extends BannerAbstract
         }
 
         return $image;
-    }
-
-    private function __prepareImage()
-    {
-        $imageInfo = [
-            'name'=>$_FILES['general']['name']['image'],
-            'type'=>$_FILES['general']['type']['image'],
-            'tmp_name'=>$_FILES['general']['tmp_name']['image'],
-            'error'=>$_FILES['general']['error']['image'],
-            'size'=>$_FILES['general']['size']['image']
-        ];
-
-        $_FILES = ['image'=>$imageInfo];
     }
 }

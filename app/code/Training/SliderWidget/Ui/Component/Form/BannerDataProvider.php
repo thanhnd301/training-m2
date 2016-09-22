@@ -81,12 +81,16 @@ class BannerDataProvider extends AbstractDataProvider
         /** @var $group \Training\SliderWidget\Model\Slider */
         foreach ($items as $banner) {
             $image = $banner['image'];
-            $baseUrl = $this->_storeManger->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
-            $imageUrl = $baseUrl.'sliderwidget/'.$image;
-            $banner['image'] = array([
-                'name'=>$image,
-                'url'=>$imageUrl
-            ]);
+            if($image)
+            {
+                $baseUrl = $this->_storeManger->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+                $imageUrl = $baseUrl.'sliderwidget/'.$image;
+                $banner['image'] = array([
+                    'name'=>$image,
+                    'url'=>$imageUrl
+                ]);
+            }
+
             $this->loadedData[$banner->getId()] = ['general'=>$banner->getData()];
         }
 

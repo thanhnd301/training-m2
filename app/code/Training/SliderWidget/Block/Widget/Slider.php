@@ -51,4 +51,14 @@ class Slider extends Template implements BlockInterface
         }
         return $html;
     }
+
+    public function canShowInFrontEnd()
+    {
+        $isEnabled=$this->getConfigValue('sliderwidget/general/enable_in_frontend');
+        if($isEnabled)
+        {
+            return true;
+        }
+        return false;
+    }
 }

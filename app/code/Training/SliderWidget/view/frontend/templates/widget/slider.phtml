@@ -1,3 +1,4 @@
+<?php if($block->canShowInFrontEnd()){ ?>
 <style type="text/css">
     .slideshow{
         position:relative;
@@ -80,3 +81,4 @@ echo $this->getBannerHtml($sliderId);
         }
     });
 </script>
+<?php } ?>
