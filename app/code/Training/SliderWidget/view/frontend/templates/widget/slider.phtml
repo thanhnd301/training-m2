@@ -34,9 +34,20 @@
 </style>
 <div class="slideshow">
 <?php
-$sliderId = $this->getData('slider');
-echo $this->getBannerHtml($sliderId);
+    $sliderId = $this->getData('slider');
+    $banners = $block->getBanners($sliderId);
+
+    if($banners)
+    {
+        foreach ($banners as $banner)
+        {
+            if($banner['image'])
+            {
+                $image = $block->getBaseUrl().'pub/media/sliderwidget/'.$banner['image'];
 ?>
+    <div><a href="<?php echo $banner['link'] ?>"><img src="<?php echo $image?>"/></a></div>
+<?php }}} ?>
+
 </div>
 <script type="text/javascript">
     require(['jquery'], function($){

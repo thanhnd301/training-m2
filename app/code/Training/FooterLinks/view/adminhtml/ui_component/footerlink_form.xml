@@ -84,6 +84,16 @@
                 </item>
             </argument>
         </field>
+        <field name="sort_order">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Sort Order</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">footerlink</item>
+                </item>
+            </argument>
+        </field>
         <field name="group_id">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Training\FooterLinks\Ui\Component\Listing\Column\Options\Group</item>

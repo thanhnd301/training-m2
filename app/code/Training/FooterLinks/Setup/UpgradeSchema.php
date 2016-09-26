@@ -31,6 +31,24 @@ class UpgradeSchema implements UpgradeSchemaInterface
             ));
         }
 
+        if (version_compare($context->getVersion(), '0.0.3') < 0) {
+
+            $sortColumnDefinintion = array(
+                'type'=>\Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
+                'comment'=>'Sort Order',
+                'nullable'=>false,
+                'default'=>99
+            );
+            
+            // Add column 'sort_order' to table 'footerlinks_links'
+            $table = $setup->getTable('footerlinks_links');
+            $setup->getConnection()->addColumn($table,'sort_order',$sortColumnDefinintion);
+
+            // Add column 'sort_order' to table 'footerlinks_groups'
+            $table = $setup->getTable('footerlinks_groups');
+            $setup->getConnection()->addColumn($table,'sort_order',$sortColumnDefinintion);
+        }
+
         $setup->endSetup();
     }
 }

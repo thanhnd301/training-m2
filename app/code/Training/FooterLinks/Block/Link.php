@@ -42,13 +42,14 @@ class Link extends Template
             ->addFieldToFilter('store_id',array(
                 array('like'=>'%'.$storeId.'%'),
                 array('eq'=>0)
-            ))->getData();
+            ))
+            ->setOrder('sort_order','asc')
+            ->getData();
         if (empty($groupLinkData))
         {
             return '';
         }
 
-        $html = '';
         // Get all link in group found
         foreach ($groupLinkData as $group)
         {
@@ -57,23 +58,24 @@ class Link extends Template
                 ->addFieldToSelect(['title','link'])
                 ->addFieldToFilter('status',1)
                 ->addFieldToFilter('group_id',$group['group_id'])
+                ->setOrder('sort_order','asc')
                 ->getData();
 
             if (empty($linkData))
             {
                 continue;
             }
+            $links[$group['title']]=array();
 
-            $html .= '<ul class="footer links">';
-            $html .='<li class="nav item current"><strong>'.$group['title'].'</strong></li>';
             foreach ($linkData as $link)
             {
-                $html .=' <li class="nav item">';
-                $html .= '<a href="'.$this->getUrl($link['link']).'">'.$link['title'].'</a></li>';
+                $links[$group['title']][] = array(
+                    'url'=>$this->getUrl($link['link']),
+                    'label'=>$link['title']
+                );
             }
-            $html .= '</ul>';
         }
 
-        return $html;
+        return $links;
     }
 }

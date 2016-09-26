@@ -35,28 +35,20 @@ class Slider extends Template implements BlockInterface
         $this->setTemplate('widget/slider.phtml');
     }
 
-    public function getBannerHtml($sliderId)
+    public function getBanners($sliderId)
     {
         $collection = $this->_collectionFactory->create();
         $banners = $collection
             ->addFieldToFilter('status',1)
             ->addFieldToFilter('slider_id',$sliderId)
+            ->setOrder('sort_order','asc')
             ->getData();
-        $html = "";
-        if($banners)
-        {
-            foreach ($banners as $banner)
-            {
-                $link = $banner['link'];
-                if($banner['image'])
-                {
-                    $image = $this->getBaseUrl().'pub/media/sliderwidget/'.$banner['image'];
-                    $html .= "<div><a href='$link'><img src='$image'/></a></div>";
-                }
+        return $banners;
+    }
 
-            }
-        }
-        return $html;
+    public function getBaseUrl()
+    {
+        return parent::getBaseUrl();
     }
 
     public function canShowInFrontEnd()
