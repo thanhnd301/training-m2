@@ -59,7 +59,6 @@ class Save extends SliderAbstract
                 $this->messageManager->addSuccess(__('Slider saved'));
                 $this->_getSession()->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    var_dump($model->getData());die("<br/> back");
                     return $resultRedirect->setPath('*/*/edit', ['id' => $model->getId(), '_current' => true]);
                 }
                 return $resultRedirect->setPath('*/*/');

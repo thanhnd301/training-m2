@@ -50,7 +50,6 @@ class Save extends LinkAbstract
                 $this->messageManager->addSuccess(__('Link saved'));
                 $this->_getSession()->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    var_dump($model->getData());die("<br/> back");
                     return $resultRedirect->setPath('*/*/edit', ['id' => $model->getId(), '_current' => true]);
                 }
                 return $resultRedirect->setPath('*/*/index');
