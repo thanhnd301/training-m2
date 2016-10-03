@@ -18,7 +18,7 @@
                        showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <coment>Enable in frontend.</coment>
+                    <comment>Enable in frontend.</comment>
                 </field>
             </group>
         </section>

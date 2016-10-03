@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+	<default>
+        <carriers>
+            <baybanbua>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+				<model>Training\BBBShipping\Model\Carrier\BayBanBua</model>
+                <name>Training BBBShipping Shipping</name>
+                <price>0.00</price>
+                <title>Training BBBShipping Shipping</title>
+               <specificerrmsg>Training BBBShipping Shipping is not available for your area. Please contact us.</specificerrmsg>
+            </baybanbua>
+            <!-- carrier-config -->
+        </carriers>
+    </default>
+</config>
