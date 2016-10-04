@@ -9,12 +9,15 @@ define(
     function (quote,$) {
         "use strict";
         return function (shippingMethod) {
-            if('baybanbua' == shippingMethod.carrier_code)
+            if(shippingMethod)
             {
-                $('#baybanbua_term').css('display','block');
-            }
-            else{
-                $('#baybanbua_term').css('display','none');
+                if('baybanbua' == shippingMethod.carrier_code)
+                {
+                    $('#baybanbua_term').css('display','block');
+                }
+                else{
+                    $('#baybanbua_term').css('display','none');
+                }
             }
             quote.shippingMethod(shippingMethod)
         }

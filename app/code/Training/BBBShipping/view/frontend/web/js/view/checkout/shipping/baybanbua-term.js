@@ -9,7 +9,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Training_BBBShipping/checkout/shipping/additional-block'
+            template: 'Training_BBBShipping/checkout/shipping/baybanbua-term'
         }
     });
 });
