@@ -12,7 +12,7 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 
-class RemoveFooterLinksBlock implements ObserverInterface
+class RemoveFooterLinksChildren implements ObserverInterface
 {
     protected $_scopeConfig;
 
