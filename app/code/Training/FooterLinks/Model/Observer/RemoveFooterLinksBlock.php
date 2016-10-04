@@ -25,7 +25,7 @@ class RemoveFooterLinksBlock implements ObserverInterface
     {
         /** @var \Magento\Framework\View\Element\Template $block */
         $block = $observer->getBlock();
-        if ($block->getType() == 'Magento\Framework\View\Element\Html\Links')
+        if ($block->getNameInLayout() == 'footer_links')
         {
             $remove = $this->_scopeConfig->getValue(
                 'footerlinks/general/enable_in_frontend',
