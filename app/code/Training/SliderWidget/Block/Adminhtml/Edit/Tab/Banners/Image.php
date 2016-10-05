@@ -12,16 +12,19 @@ namespace Training\SliderWidget\Block\Adminhtml\Edit\Tab\Banners;
 use Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer;
 use Magento\Framework\DataObject;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Backend\Block\Context;
+use Magento\Framework\UrlInterface;
 
 class Image extends AbstractRenderer
 {
     private $_storeManager;
+
     /**
      * @param \Magento\Backend\Block\Context $context
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Context $context,
+        Context $context,
         StoreManagerInterface $storemanager,
         array $data = [])
     {
@@ -29,6 +32,7 @@ class Image extends AbstractRenderer
         parent::__construct($context, $data);
         $this->_authorization = $context->getAuthorization();
     }
+
     /**
      * Renders grid column
      *
@@ -37,9 +41,7 @@ class Image extends AbstractRenderer
      */
     public function render(DataObject $row)
     {
-        $mediaDirectory = $this->_storeManager->getStore()->getBaseUrl(
-            \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
-        );
+        $mediaDirectory = $this->_storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
         $imageUrl = $mediaDirectory.'/sliderwidget/'.$this->_getValue($row);
         return '<img src="'.$imageUrl.'" width="70"/>';
     }

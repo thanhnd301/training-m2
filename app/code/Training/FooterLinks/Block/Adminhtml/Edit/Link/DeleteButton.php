@@ -8,7 +8,6 @@
 
 namespace Training\FooterLinks\Block\Adminhtml\Edit\Link;
 
-
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Training\FooterLinks\Block\Adminhtml\Edit\GenericButton;
 

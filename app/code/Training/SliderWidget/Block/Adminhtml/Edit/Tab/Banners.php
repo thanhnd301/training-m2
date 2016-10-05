@@ -8,6 +8,12 @@
 
 namespace Training\SliderWidget\Block\Adminhtml\Edit\Tab;
 
+use Magento\Backend\Block\Template\Context;
+use Magento\Backend\Helper\Data;
+use Training\SliderWidget\Model\ResourceModel\Banner\CollectionFactory as BannerCollectionFactory;
+use Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory as DataProviderColelctionFactory;
+use Magento\Framework\Registry;
+
 class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
@@ -27,11 +33,11 @@ class Banners extends \Magento\Backend\Block\Widget\Grid\Extended
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Backend\Helper\Data $backendHelper,
-        \Training\SliderWidget\Model\ResourceModel\Banner\CollectionFactory $bannerCollectionFactory,
-        \Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory $collectionFactory,
-        \Magento\Framework\Registry $registry,
+        Context $context,
+        Data $backendHelper,
+        BannerCollectionFactory $bannerCollectionFactory,
+        DataProviderColelctionFactory $collectionFactory,
+        Registry $registry,
         array $data = []
     ) {
         $this->_coreRegistry = $registry;

@@ -59,17 +59,6 @@ class LinkGroupActions extends Column
                     'hidden' => false,
                     'target' => '_blank',
                 ];
-                $item[$this->getData('name')]['manager'] = [
-                    'href' => $this->urlBuilder->getUrl(
-                        'footerlinks/link/index',
-                        [
-                            'linkgroup' => $item['group_id']
-                        ]
-                    ),
-                    'label' => __('Links Manager'),
-                    'hidden' => true,
-                    'target' => '_blank',
-                ];
             }
         }
 

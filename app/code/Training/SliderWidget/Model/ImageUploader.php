@@ -87,9 +87,6 @@ class ImageUploader
         Filesystem $filesystem,
         UploaderFactory $uploaderFactory,
         StoreManagerInterface $storeManager,
-        //$baseTmpPath,
-        //$basePath,
-        //$allowedExtensions,
         LoggerInterface $logger
     ) {
         $this->coreFileStorageDatabase = $coreFileStorageDatabase;
@@ -100,9 +97,6 @@ class ImageUploader
         $this->baseTmpPath = 'sliderwidget/tmp';
         $this->basePath = 'sliderwidget';
         $this->allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
-//        $this->baseTmpPath = $baseTmpPath;
-//        $this->basePath = $basePath;
-//        $this->allowedExtensions = $allowedExtensions;
     }
 
     /**

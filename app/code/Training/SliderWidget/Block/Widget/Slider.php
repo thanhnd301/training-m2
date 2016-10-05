@@ -12,6 +12,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Widget\Block\BlockInterface;
 use Training\SliderWidget\Model\ResourceModel\Banner\CollectionFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Slider extends Template implements BlockInterface
 {
@@ -21,8 +22,8 @@ class Slider extends Template implements BlockInterface
     public function __construct(
         Context $context,
         CollectionFactory $collectionFactory,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        array $data)
+        ScopeConfigInterface $scopeConfig,
+        array $data = [])
     {
         parent::__construct($context, $data);
         $this->_collectionFactory = $collectionFactory;

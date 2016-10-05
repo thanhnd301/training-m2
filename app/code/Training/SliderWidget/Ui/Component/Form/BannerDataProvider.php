@@ -12,6 +12,8 @@ use Magento\Ui\DataProvider\AbstractDataProvider;
 use Training\SliderWidget\Model\ResourceModel\Banner\CollectionFactory as BannerCollectionFactory;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\UrlInterface;
 
 class BannerDataProvider extends AbstractDataProvider
 {
@@ -44,7 +46,7 @@ class BannerDataProvider extends AbstractDataProvider
         $primaryFieldName,
         $requestFieldName,
         BannerCollectionFactory $bannerCollectionFactory,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        StoreManagerInterface $storeManager,
         array $meta = [],
         array $data = []
     ) {
@@ -83,7 +85,7 @@ class BannerDataProvider extends AbstractDataProvider
             $image = $banner['image'];
             if($image)
             {
-                $baseUrl = $this->_storeManger->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+                $baseUrl = $this->_storeManger->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
                 $imageUrl = $baseUrl.'sliderwidget/'.$image;
                 $banner['image'] = array([
                     'name'=>$image,

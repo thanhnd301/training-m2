@@ -22,13 +22,6 @@ class Thumbnail extends Column
     const ALT_FIELD = 'name';
 
     /**
-     * @var string
-     */
-    private $__editUrl;
-
-    private $__objectManager = null;
-
-    /**
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param \Training\SliderWidget\Model\Banner\Image $imageHelper
@@ -48,7 +41,6 @@ class Thumbnail extends Column
         parent::__construct($context, $uiComponentFactory, $components, $data);
         $this->imageHelper = $imageHelper;
         $this->urlBuilder = $urlBuilder;
-        $this->__objectManager = $objectManager;
     }
 
     /**

@@ -9,28 +9,9 @@
 namespace Training\FooterLinks\Controller\Adminhtml\LinkGroup;
 
 use Training\FooterLinks\Controller\Adminhtml\GroupAbstract;
-use Magento\Backend\App\Action\Context;
-use Magento\Framework\Registry;
-use Magento\Framework\View\Result\PageFactory;
-use Training\FooterLinks\Model\LinkGroupFactory;
-use Training\FooterLinks\Model\LinkFactory;
 
 class MassDelete extends GroupAbstract
 {
-    protected $_linkFactory;
-
-    public function __construct(
-        Context $context,
-        Registry $coreRegistry,
-        PageFactory $resultPageFactory,
-        LinkGroupFactory $groupFactory,
-        LinkFactory $linkFactory
-    )
-    {
-        parent::__construct($context, $coreRegistry, $resultPageFactory, $groupFactory);
-        $this->_linkFactory = $linkFactory;
-    }
-
     /**
      * @return void
      */
@@ -51,7 +32,6 @@ class MassDelete extends GroupAbstract
 
                 try
                 {
-                    $this->deleteLink($groupId);
                     $model->delete();
                     $success++;
                 }
@@ -72,22 +52,4 @@ class MassDelete extends GroupAbstract
 
         $this->_redirect('*/*/index');
     }
-
-    private function deleteLink($groupId)
-    {
-        $model = $this->_linkFactory->create();
-        $linkIds = $model->getCollection()->addFieldToFilter('group_id',$groupId)->getAllIds();
-        foreach ($linkIds as $linkId)
-        {
-            try
-            {
-                $model->load($linkId)->delete();
-            }
-            catch (\Exception $e)
-            {
-                continue;
-            }
-        }
-    }
-
 }

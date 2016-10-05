@@ -28,8 +28,7 @@ class Index extends LinkAbstract
 
         //Add bread crumb
         $resultPage->addBreadcrumb(__('Training'), __('Training'));
-        $resultPage->addBreadcrumb(__('Group Link'), __('Group Link'));
-        $resultPage->addBreadcrumb(__('Footer Link'), __('Manage Link'));
+        $resultPage->addBreadcrumb(__('Manage Footer Link'), __('Manage Footer Link'));
 
         return $resultPage;
     }

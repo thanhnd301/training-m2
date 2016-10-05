@@ -11,6 +11,7 @@ namespace Training\SliderWidget\Block\Adminhtml\Edit\Tab\Banners;
 use Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer;
 use Magento\Framework\DataObject;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Backend\Block\Context;
 
 class Link extends AbstractRenderer
 {
@@ -20,7 +21,7 @@ class Link extends AbstractRenderer
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Context $context,
+        Context $context,
         StoreManagerInterface $storemanager,
         array $data = [])
     {

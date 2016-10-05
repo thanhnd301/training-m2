@@ -28,16 +28,8 @@ class Index extends GroupAbstract
 
         //Add bread crumb
         $resultPage->addBreadcrumb(__('Training'), __('Training'));
-        $resultPage->addBreadcrumb(__('Group Link'), __('Manage Group Link'));
+        $resultPage->addBreadcrumb(__('Manage Group Link'), __('Manage Group Link'));
 
         return $resultPage;
-    }
-
-    /*
-	 * Check permission via ACL resource
-	 */
-    protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('Training_FooterLinks::footerlinks_linkgroup');
     }
 }

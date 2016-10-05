@@ -14,7 +14,7 @@ use Training\SliderWidget\Controller\Adminhtml\BannerAbstract;
 class Banner extends BannerAbstract
 {
     /**
-     *
+     * @return layout
      */
     public function execute()
     {

@@ -8,7 +8,6 @@
 
 namespace Training\FooterLinks\Block\Adminhtml\Edit;
 
-
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class SaveButton implements ButtonProviderInterface
