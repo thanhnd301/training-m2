@@ -29,6 +29,17 @@
                                                         </item>
                                                     </item>
                                                 </item>
+                                                <item name="step-config" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="shipping-rates-validation" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="baybanbua-validation" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Training_BBBshipping/js/view/baybanbua-validation</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
                                             </item>
                                         </item>
                                     </item>
