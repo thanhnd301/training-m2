@@ -247,6 +247,14 @@ define(
 
                 var shippingMethod = quote.shippingMethod();
                 if('baybanbua' == shippingMethod.carrier_code){
+                    // Check rate chosen
+                    if(!$('#baybanbua_rate .rate_radio:checked').length)
+                    {
+                        alert('Choose our shipping method to continue');
+                        return false;
+                    }
+
+                    // Check agree term
                     if(!$('#baybanbua_term_checkbox:checked').length){
                         alert('Agree with our term to continue');
                         return false;

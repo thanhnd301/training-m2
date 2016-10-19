@@ -5,8 +5,14 @@
         padding: 10px;
     }
 </style>
-<div id="baybanbua_term">
-    <p>I confirm that I give BayBanBua company permission to deliver my items bought at Très Bien.
+<div id="baybanbua_term" data-bind="visible: isShowed">
+    <div id="bbb_services">
+        <div style="font-style: italic;margin-bottom: 2em">Choose shipping method and agree with our term to continue</div>
+        <div id="baybanbua_rate" data-bind="html: ratesText">
+
+        </div>
+    </div>
+   <p>I confirm that I give BayBanBua company permission to deliver my items bought at Très Bien.
         If any of my items are lost, broken or malfunctioned during shipping period,
         I will take full responsibility and will not sue either BayBanBua or Très Bienor Mr. Khue Nguyen Quang.</p>
     <input type="checkbox" id="baybanbua_term_checkbox"> I agree

@@ -13,7 +13,7 @@
                 <sallowspecific>0</sallowspecific>
 				<model>Training\BBBShipping\Model\Carrier\BayBanBua</model>
                 <name>BayBanBua Shipping</name>
-                <price>10.00</price>
+                <price>0.00</price>
                 <title>BayBanBua Shipping</title>
                <specificerrmsg>BayBanBua Shipping is not available for your area. Please contact us.</specificerrmsg>
             </baybanbua>
