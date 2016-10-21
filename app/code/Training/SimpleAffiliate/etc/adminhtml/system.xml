@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="sliderwidget" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="simpleaffiliate" translate="label" sortOrder="30" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
             <label>Simple Affiliate</label>
-            <tab>simple_affiliate</tab>
-            <resource>Training_Affiliate::config_affiliate</resource>
+            <tab>training</tab>
+            <resource>Training_SimpleAffiliate::config_simpleaffiliate</resource>
             <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1"
                    showInWebsite="1" showInStore="1">
                 <label>General Settings</label>
@@ -13,24 +14,6 @@
                     <label>Enable</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Enable in frontend.</comment>
-                </field><field id="commission_type" translate="label" type="select" sortOrder="2"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Commission Type</label>
-                    <source_model>Training\SimpleAffiliate\MOdel\Config\Source\AffiliateRateType</source_model>
-                    <comment>Enable in frontend.</comment>
-                </field><field id="commission_value" translate="label" type="select" sortOrder="3"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Commission Value</label>
-                    <comment>Commission value.</comment>
-                </field><field id="discount_type" translate="label" type="select" sortOrder="4"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Disscount Type</label>
-                    <source_model>Training\SimpleAffiliate\MOdel\Config\Source\AffiliateRateType</source_model>
-                    <comment>Enable in frontend.</comment>
-                </field><field id="discount_value" translate="label" type="select" sortOrder="5"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Discount Value</label>
-                    <comment>Discount value</comment>
                 </field>
             </group>
         </section>
